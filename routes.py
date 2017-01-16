@@ -1,6 +1,10 @@
 from flask import Flask, render_template
-
+from models import db
 app = Flask(__name__)
+
+app.config['SQL_ALCHEMY_DATABASE_URI'] = 'postgres://localhost/learningflask'
+db.init_app(app)
+
 @app.route("/")
 def index():
     return render_template("index.html")
